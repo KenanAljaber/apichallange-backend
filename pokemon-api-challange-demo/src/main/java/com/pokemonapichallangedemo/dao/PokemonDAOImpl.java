@@ -31,15 +31,6 @@ public class PokemonDAOImpl implements PokemonDAO {
     public List<Pokemon> getAllPokemons() {
         Session session = entityManager.unwrap(Session.class);
         List<Pokemon> pokemons = session.createQuery("FROM Pokemon", Pokemon.class).list();
-        /*
-         * pokemons.forEach(it->{
-         * // Hibernate.initialize(it.getAbilities());
-         * // Hibernate.initialize(it.getTypes());
-         * // it.getAbilities().size();
-         * // it.getTypes().size();
-         * // System.out.println(it);
-         * });
-         */
         return pokemons;
     }
 
@@ -54,8 +45,8 @@ public class PokemonDAOImpl implements PokemonDAO {
     @Override
     public Long getPokemonCount() {
         Session session = entityManager.unwrap(Session.class);
-        Query<Long> query=session.createQuery("SELECT count(*) FROM Pokemon");
-        Long t=query.uniqueResult();
+        Query<Long> query = session.createQuery("SELECT count(*) FROM Pokemon");
+        Long t = query.uniqueResult();
         return t;
     }
 

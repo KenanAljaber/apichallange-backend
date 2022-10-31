@@ -21,6 +21,7 @@ import com.pokemonapichallangedemo.entity.Ability;
 import com.pokemonapichallangedemo.entity.Pokemon;
 import com.pokemonapichallangedemo.entity.Type;
 import com.pokemonapichallangedemo.service.MyService;
+import com.pokemonapichallangedemo.utils.GameCardHandler;
 
 
 
@@ -165,7 +166,7 @@ public class FilesLoader {
         pokemon.setAbilities(getAbilitiesList(abilitiesJsonArray));
         pokemon.setTypes(getTypesList(typesJsonArray));
         String name = jsonUrlResult.getString("name");
-        pokemon.setName(capitalizeFirstLetter(name));
+        pokemon.setName(GameCardHandler.capitalizeFirstLetter(name));
 
         pokemon.setWeight(jsonUrlResult.getInt("weight"));
         pokemon.setHeight(jsonUrlResult.getInt("height"));
@@ -176,12 +177,7 @@ public class FilesLoader {
         return pokemon;
     }
 
-    private String capitalizeFirstLetter(String name) {
-        String firstLetter = name.substring(0, 1).toUpperCase();
-        String nameRest = name.substring(1).toLowerCase();
-        return firstLetter + nameRest;
-
-    }
+   
 
     private void descriptionGenerator(Pokemon pokemon) {
 
